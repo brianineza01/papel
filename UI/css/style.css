@@ -1,0 +1,89 @@
+ body,html{
+    background-color: rgb(243, 243, 178);
+    padding: 0px;
+    margin: 0px;
+} 
+* {
+    font-family: Tahoma;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+button{
+    border: none;
+    background-color: #1d70b8;
+    min-width:80px ;
+    min-height: 40px;
+    font-size: 20px;
+    margin-left: 0px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+.container{
+    background-color: rgba(255, 255, 255, 0.589);
+    /* justify-content: center; */
+}
+h1{
+    color:#3e688c;
+    font: size 50;
+    margin-top: 0px;
+}
+#hom-cont{
+    
+    /* transform: translate(-50%,-50%); */
+    background-color: whitesmoke;
+    box-shadow: 2px 2px 5px 5px rgba(134, 212, 212, 0.699);
+    position: absolute;
+    border-radius: 10px;
+    padding: 20px;
+    left: 40%;
+    margin-left: -100px;
+    top: 20%;
+    margin-top: 60px;
+    min-width: 25%;
+    
+}
+#hom-cont h1,input,span,button,label,.textbox,.home-cash{
+    margin-left: 10%;
+}
+form label {
+    display: block;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+#header{
+    margin: 0px;
+    background: #3e688c;;
+    width: 100%;
+    height: 60px;
+}
+.textbox{
+    border: none;
+    background-color: transparent ;
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+    color: black;
+    width: 80%;
+    border-bottom:  rgb(125, 188, 224) solid;
+    margin-bottom: 10px;
+}
+i{
+    color: grey;
+}
+#logo{
+    width: 100px;
+    height: 60px;
+    margin-left: 20px; 
+    
+}
+span{
+    padding: 5px;
+}
+
+

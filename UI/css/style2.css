@@ -1,0 +1,130 @@
+ /* The sidebar menu */
+ .sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    left: 0;
+    background-color: #3e688c; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 15%;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+    background-color: #1d70b8;
+  }
+  
+  /* Style page content */
+  .main {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    
+  } 
+ 
+  .iconsv
+  {
+    height: 40px;
+    display: block;
+    margin: 35px;
+  }
+  .icons{
+    height: 70px;
+    display: block;
+    margin: 20px;
+  }
+
+.info{
+  border: #3584ca3b 2px solid;
+  background-color: white;
+  padding: 10px;
+  display: inline-block;
+  margin-left: 0px;
+  margin-bottom: 60px;
+  margin-right: 80px;
+  margin-top: 40px;
+  min-width: 250px;
+}
+
+label{
+  font-size: 20px;
+  font-family: fantasy;
+  display: block;
+  margin-bottom: 10px;
+  
+}
+
+article{
+  border: rgb(73, 105, 101) 1px solid;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2.5px 2.5px rgba(72, 104, 104, 0.699);
+  background-color: whitesmoke;
+  display: none;
+}
+
+.home-cash{
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 5px 5px rgba(134, 212, 212, 0.699);
+  border-radius: 10px;
+  padding: 20px;
+  min-width: 250px;
+  max-width: 50%;
+  margin-top: 60px;
+  display: block;
+}
+
+
+h1{
+  margin-left: 4vw;
+}
+
+.button{
+   height: 40%; /* Full-height: remove this if you want "auto" height */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+     /* Stay on top */
+    left: 0;
+    background-color: transparent; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 15%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+
+}
+
+table {
+  background-color: white;
+  border-collapse: collapse;
+  width: 80%;
+}
+tr,td,th {
+  border: black solid 1px;
+  padding: 5px;
+  text-align: center;
+
+}
+th{
+  background-color: #03178C;
+  color: white;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
