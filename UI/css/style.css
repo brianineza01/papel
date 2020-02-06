@@ -26,7 +26,6 @@ button{
 
 .container{
     background-color: rgba(255, 255, 255, 0.589);
-    /* justify-content: center; */
 }
 h1{
     color:#3e688c;
@@ -34,8 +33,6 @@ h1{
     margin-top: 0px;
 }
 #hom-cont{
-    
-    /* transform: translate(-50%,-50%); */
     background-color: whitesmoke;
     box-shadow: 2px 2px 5px 5px rgba(134, 212, 212, 0.699);
     position: absolute;

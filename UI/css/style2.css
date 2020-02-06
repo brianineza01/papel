@@ -1,37 +1,9 @@
- /* The sidebar menu */
- .sidenav {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 160px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    left: 0;
-    background-color: #3e688c; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 15%;
-  }
-  
-  /* The navigation menu links */
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #ffffff;
-    display: block;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidenav a:hover {
-    color: #f1f1f1;
-    background-color: #1d70b8;
-  }
-  
-  /* Style page content */
+
   .main {
-    margin-left: 160px; /* Same as the width of the sidebar */
+    margin-left: 160px; 
     padding: 0px 10px;
   }
   
-  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
@@ -97,13 +69,12 @@ h1{
 }
 
 .button{
-   height: 40%; /* Full-height: remove this if you want "auto" height */
-    width: 160px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-     /* Stay on top */
+   height: 40%; 
+    width: 160px; 
+    position: fixed; 
     left: 0;
-    background-color: transparent; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
+    background-color: transparent; 
+    overflow-x: hidden;
     padding-top: 15%;
     justify-content: space-evenly;
     display: flex;
