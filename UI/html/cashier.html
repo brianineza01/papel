@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard | papel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="header">
+        <img src="../images/logo.png" alt="logo" id="logo">
+      </div>
+      <div class="button">
+            <button onclick="moveelm()">credit</button>
+            <button onclick="moveele()">Debit</button>
+        </div>
+       
+    <div class="main">
+       
+        
+            <div class="home-cash" id="debit">
+                <h1>Debit Account</h1>
+                <form action="">
+                    <label for="acc-nbr">account number</label>
+                    <input type="numbers" name="acc-nbr" id="" class="textbox">
+                    <label for="acc-own">account owner</label>
+                    <input type="text" name="acc-own" id="" class="textbox">
+                    <label for="amount">Amount</label>
+                    <input type="text" name="amount" id="" class="textbox">
+                    <button type="submit">Debit</button>
+                </form>
+            </div>
+       
+        
+            <div class="home-cash" id="credit">
+                <h1>credit Account</h1>
+                <form action="">
+                    <label for="acc-nbr">account number</label>
+                    <input type="numbers" name="acc-nbr" id="" class="textbox">
+                    <label for="acc-own">account owner</label>
+                    <input type="text" name="acc-own" id="" class="textbox">
+                    <label for="amount">Amount</label>
+                    <input type="text" name="amount" id="" class="textbox">
+                    <button type="submit">Credit</button>
+                </form>
+          </div>
+       
+    </div>
+    
+    <script src="../js/script.js"></script>
+</body>
+</html>

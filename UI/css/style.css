@@ -83,4 +83,6 @@ span{
     padding: 5px;
 }
 
-
+#debit ,#credit{
+    display: none;
+}
