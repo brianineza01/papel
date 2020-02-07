@@ -46,10 +46,12 @@ article{
   border: rgb(73, 105, 101) 1px solid;
   padding: 20px;
   margin-top: 10px;
+  margin-left: -100px;
   border-radius: 6px;
   box-shadow: 1px 1px 2.5px 2.5px rgba(72, 104, 104, 0.699);
   background-color: whitesmoke;
-  display: none;
+  display: block;
+  cursor: pointer;
 }
 
 .home-cash{
