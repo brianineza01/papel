@@ -1,5 +1,6 @@
 
   .main {
+    
     margin-left: 160px; 
     padding: 0px 10px;
   }
@@ -28,7 +29,7 @@
   padding: 10px;
   display: inline-block;
   margin-left: 0px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   margin-right: 80px;
   margin-top: 40px;
   min-width: 250px;
@@ -110,4 +111,8 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 .tdlinks{
   color: #03178C;
   border-bottom: steelblue 1px solid;
+}
+
+#accountinfo{
+  top: 500px;
 }
