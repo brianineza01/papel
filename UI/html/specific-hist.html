@@ -7,12 +7,27 @@
     <title>Dashboard | papel</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="../css/stylenav.css">
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="header">
-        <img src="../images/logo.png" alt="logo" id="logo">
-    </div>
+    <nav>
+        <div class="logo">
+             <img src="../images/logo.png" alt="logo picture" class="logopic">
+        </div>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="acc-history.html">History</a></li>
+          <li><a href="index.html">Log out</a></li>
+        </ul>
+        
+    </nav>
+    <section class="landing lando">
 <div id="accountinfo" class="main">
     <h1>Transaction information</h1>
     <div class="info">  
@@ -48,5 +63,12 @@
     </div>
     </div>        
 </div> 
+</section>
+<footer>
+    <div class="footer-cont">
+        &copy; papel 2020
+    </div>
+</footer>
+<script src="../Js/file.js"></script>
 </body>
 </html>

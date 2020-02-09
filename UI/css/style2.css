@@ -1,10 +1,5 @@
 
-  .main {
-    
-    margin-left: 160px; 
-    padding: 0px 10px;
-  }
-  
+
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
@@ -25,14 +20,15 @@
 
 .info{
   border: #3584ca3b 2px solid;
-  background-color: white;
-  padding: 10px;
   display: inline-block;
+  background-color: whitesmoke;
+  padding: 10px;
   margin-left: 0px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   margin-right: 80px;
   margin-top: 40px;
-  min-width: 250px;
+  z-index: 5;
+  min-width: 295px;
 }
 
 label{
@@ -47,22 +43,17 @@ article{
   border: rgb(73, 105, 101) 1px solid;
   padding: 20px;
   margin-top: 10px;
-  margin-left: -100px;
   border-radius: 6px;
-  box-shadow: 1px 1px 2.5px 2.5px rgba(72, 104, 104, 0.699);
-  background-color: white;
+  background-color: whitesmoke;
   display: block;
   cursor: pointer;
+  width: 45vw;
 }
 
 .home-cash{
   background-color: whitesmoke;
-  box-shadow: 2px 2px 5px 5px rgba(134, 212, 212, 0.699);
-  border-radius: 10px;
-  padding: 20px;
   min-width: 250px;
   max-width: 50%;
-  margin-top: 60px;
   display: block;
 }
 
@@ -72,16 +63,13 @@ h1{
 }
 
 .button{
-   height: 40%; 
-    width: 160px; 
-    position: fixed; 
-    left: 0;
+    height: 10vh; 
+    width: 40%;  
     background-color: transparent; 
     overflow-x: hidden;
-    padding-top: 15%;
     justify-content: space-evenly;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
 }
 
@@ -113,6 +101,11 @@ tr:nth-child(even) {background-color: #f2f2f2;}
   border-bottom: steelblue 1px solid;
 }
 
-#accountinfo{
-  top: 500px;
+.elements{
+  height: 80vh;
+  width: 80vw;
+  padding-left: 20%;
+}
+.debit{
+  display: block;
 }
