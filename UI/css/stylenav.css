@@ -1,4 +1,4 @@
-  * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -104,7 +104,8 @@
     margin-bottom: 10px;
     border-radius: 4px;
     color: white;
-    padding: 5px;
+    padding: 15px;
+
   }
   .lando{
     height: unset;
@@ -240,11 +241,6 @@
     li.fade {
       opacity: 1;
     }
-    /* .logopic{
-      
-      width: 20px;
-      height: 10px;
-    } */
     .logo{
         margin-top: -4px;
         margin-left: -2px;
