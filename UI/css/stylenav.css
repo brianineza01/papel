@@ -69,12 +69,14 @@
     align-items: center;
   }
   .landing .back-head{
-    background-color: whitesmoke;
     padding-left: 20px;
     margin-left: 0px;
     padding-right: 20px;
     width: unset;
-    max-width: 290px;
+    max-width: 320px;
+    font-size: 26px;
+    margin-top: 15px;
+    margin-bottom:20px;
   }
   .landing h1{
   font-size: 30px;
