@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
   }
   body {
     font-family: sans-serif;
@@ -67,11 +68,22 @@
     justify-content: center;
     align-items: center;
   }
-  
-  .landing h1 {
-    margin: 10px;
-    font-size: 40px;
+  .landing .back-head{
+    background-color: whitesmoke;
+    padding-left: 20px;
+    margin-left: 0px;
+    padding-right: 20px;
+    width: unset;
+    max-width: 290px;
+  }
+  .landing h1{
+  font-size: 30px;
+  color: #3e688c;
+  }
+  .landing .hom-cont h1 {
+    font-size: 30px;
     color: #3e688c;
+    margin-bottom: 10px;
   }
   .nav-links li{
     padding: 13px;
@@ -109,14 +121,18 @@
   }
   .lando{
     height: unset;
+    min-height: 82vh;
+    margin-bottom: 15px;
   }
   .accountinfo{
     position: relative;
+    margin-left: 15%;
+    margin-right: auto;
   }
   /* left-side margin */
-  .hom-cont h1,input,span,button,label,.textbox,.home-cash{
+   .hom-cont h1,input,span,button,label,.textbox,.home-cash{
     margin-left: 10%;
-  }
+  } 
  /* footer */
   footer{
     position: relative;
@@ -177,16 +193,17 @@
       width: 80vw;
       padding-left: 0px;
     }
-    .lando #accountinfo h1{
+    .lando .accountinfo h1{
       font-size: 25px;
       margin-left: 60px;
     }
     .landing h1{
       font-size: 25px;
-      margin-left: 60px;
+      margin-left: 50px;
     }
     .button{
       width: 80%;
+      height: unset;
     }
     .table{
       height: unset;
