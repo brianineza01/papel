@@ -1,0 +1,56 @@
+ body,html{
+    padding: 0px;
+    margin: 0px;
+} 
+* {
+    font-family: Tahoma;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+h1{
+    color:#3e688c;
+    font: size 50;
+    margin-top: 0px;
+}
+.button-link{
+    color: #3e688c;
+    text-decoration: underline;
+}
+form label {
+    display: block;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+.textbox{
+    border: none;
+    background-color: transparent ;
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+    color: black;
+    width: 80%;
+    border-bottom:  rgb(125, 188, 224) solid;
+    margin-bottom: 10px;
+    height: 30px;
+}
+i{
+    color: grey;
+}
+span{
+    padding: 5px;
+}
+
+#debit{
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+.button-wrap{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 28px;
+    
+}

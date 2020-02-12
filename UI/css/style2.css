@@ -1,0 +1,103 @@
+ 
+  .iconsv
+  {
+    height: 40px;
+    display: block;
+    margin: 35px;
+  }
+  .icons{
+    height: 70px;
+    display: block;
+    margin: 20px;
+  }
+
+.info{
+  border: #3584ca3b 2px solid;
+  display: inline-block;
+  background-color: whitesmoke;
+  padding: 10px;
+  margin-left: 0px;
+  margin-bottom: 60px;
+  margin-right: 80px;
+  margin-top: 40px;
+  z-index: 5;
+  min-width: 295px;
+}
+
+label{
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+  
+}
+
+article{
+  border: rgb(73, 105, 101) 1px solid;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  background-color: whitesmoke;
+  display: block;
+  cursor: pointer;
+  width: 45vw;
+}
+
+.home-cash{
+  background-color: whitesmoke;
+  min-width: 250px;
+  max-width: 50%;
+  display: block;
+}
+
+
+h1{
+  margin-left: 4vw;
+}
+
+.button{
+    height: unset; 
+    width: 40%;  
+    background-color: transparent; 
+    overflow-x: hidden;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+
+}
+
+table {
+  margin-top: 20px;
+  margin-left: 10px;
+  background-color: white;
+  border-collapse: collapse;
+  width: 80%;
+}
+tr,td,th {
+  border: black solid 1px;
+  padding: 5px;
+  text-align: center;
+
+}
+th{
+  background-color: #03178C;
+  color: white;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.article{
+  color: black;
+}
+.tdlinks{
+  color: #03178C;
+  border-bottom: steelblue 1px solid;
+}
+
+.elements{
+  height: 80vh;
+  width: 80vw;
+  padding-left: 20%;
+}
+.debit{
+  display: block;
+}
