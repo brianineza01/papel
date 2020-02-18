@@ -1,19 +1,16 @@
-const express = require('express');
-const {
-    Client
-} = require('pg');
-const bcrypt = require('bcrypt');
-const dotenv = require('dotenv')
-dotenv.config();
+import { Router } from 'express';
+import { Client } from 'pg';
+import { config } from 'dotenv';
+config();
 const client = new Client(process.env.DB_CONNECT);
-const router = express.Router();
-const authController = require('../controllers/user-auth')
+const router = Router();
+import { usersignup } from '../controllers/user-auth';
 
 router.get('/', (req, resp) => {
     resp.send("auth route is working")
 });
 
 //create user account
-router.post('/signup',authController.usersignup);
+router.post('/signup',usersignup);
 
-module.exports = router;
+export default router;
