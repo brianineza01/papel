@@ -6,13 +6,8 @@ import server from '../Server';
 chai.use(chaiHttp)
 const should = chai.should(); 
 //Our parent block
-      
-/*
-  * Test the /GET route
-  */
+  //testing login
   describe('/POST data ', () => {
-
-
     const user = [{
       "lastname": "MANISHIMWE",
       "firstname": "emy",

@@ -3,12 +3,7 @@ import { hash } from 'bcrypt';
 import client from '../database/db_connect';
 
 export async function usersignup(req, resp) {
-    const {lastname , firstname , email , type} = {
-        lastname : req.body.lastname,
-        firstname : req.body.firstname,
-        email : req.body.email,
-        type : req.body.type
-    }
+    const {lastname , firstname , email , type} = req.body
      let isadmin;
      if (type == 'admin') {
          isadmin = true
