@@ -37,8 +37,8 @@ export async function usersignup(req, resp) {
                 if (err) {
                     throw err;
                 } else {
-                    resp.send({
-                        status: 200,
+                    resp.status(201).send({
+                        status: 201,
                         data: results.rows
                 })
             }

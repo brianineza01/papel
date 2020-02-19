@@ -7,8 +7,9 @@ const router = Router();
 import { usersignup } from '../controllers/user-auth';
 
 router.get('/', (req, resp) => {
-    resp.send("auth route is working")
+    resp.status(200).json({ message :"auth route is working"});
 });
+
 
 //create user account
 router.post('/signup',usersignup);
