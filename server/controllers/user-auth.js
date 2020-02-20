@@ -45,36 +45,36 @@ export const userlogin = async (req, resp) => {
         })
     } catch (error) {
         resp.status(401).send({
-            status : 401 ,
-            error : "authentication failed"
+            status: 401,
+            error: "authentication failed"
         });
     }
     const checkpass = async val => {
-            const hashpassword = val.rows[0].password;
-            const ans =  await bcrypt.compare(req.body.password, hashpassword)
-            if (ans) {
-                const token = jwt.sign({
-                    email: val.rows[0].email,
-                    acc_type: val.rows[0].type
-                }, process.env.JWT_KEY, { expiresIn: "2h" });
-                resp.status(200).send({
-                    status: 200,
-                    data: [
-                        {
-                            token: token,
-                            id: val.rows[0].id,
-                            firstname: val.rows[0].firstname,
-                            lastname: val.rows[0].lastname,
-                            email: val.rows[0].email
-                        }
-                    ]
-                })
-            } else {
-                resp.status(401).send({
-                    status: 401,
-                    error: "authentication failed"
+        const hashpassword = val.rows[0].password;
+        const ans = await bcrypt.compare(req.body.password, hashpassword)
+        if (ans) {
+            const token = jwt.sign({
+                email: val.rows[0].email,
+                acc_type: val.rows[0].type
+            }, process.env.JWT_KEY, { expiresIn: "2h" });
+            resp.status(200).send({
+                status: 200,
+                data: [
+                    {
+                        token: token,
+                        id: val.rows[0].id,
+                        firstname: val.rows[0].firstname,
+                        lastname: val.rows[0].lastname,
+                        email: val.rows[0].email
+                    }
+                ]
+            })
+        } else {
+            resp.status(401).send({
+                status: 401,
+                error: "authentication failed"
             })
         }
     };
-    
+
 }
