@@ -1,2 +1,7 @@
 node_modules
 bin
+draft.js
+.env
+.nyc_output
+coverage
+dist
