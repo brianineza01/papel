@@ -4,8 +4,9 @@ import { config } from 'dotenv';
 config();
 const client = new Client(process.env.DB_CONNECT);
 const router = Router();
-import { usersignup } from '../controllers/user-auth';
-import { validateUser } from "../middleware/validateUser";
+import { usersignup , userlogin} from '../controllers/user-auth';
+import { validateUsersignup , validateUserlogin } from "../middleware/validateUser";
 //create user account
-router.post('/signup', validateUser ,usersignup);
+router.post('/signup', validateUsersignup ,usersignup);
+router.post('/login' , validateUserlogin , userlogin);
 export default router;
