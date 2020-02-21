@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Client } from 'pg';
 import { config } from 'dotenv';
-import { listofaccounts, createAccount } from "../controllers/accounts-control";
+import { listofaccounts, createAccount, specificinfo } from "../controllers/accounts-control";
 import { validateAccount } from "../middleware/validateaccount";
 config();
 const client = new Client(process.env.DB_CONNECT);
@@ -11,4 +11,6 @@ const router = Router();
 router.get('/', listofaccounts);
 //create bank account
 router.post('/', validateAccount, createAccount);
+//view specific account information
+router.get('/:accountnumber', specificinfo)
 export default router;

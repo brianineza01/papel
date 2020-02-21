@@ -21,5 +21,4 @@ export const createtable = () => {
 
 export const truncatetable = () => {
    client.query('TRUNCATE TABLE users CASCADE');
-   client.query('TRUNCATE TABLE accounts CASCADE');
 }
