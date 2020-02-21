@@ -121,3 +121,64 @@ export const Deleteaccount = async (req, resp) => {
         })
     }
 }
+//changing bank account status
+export const changeStatus = async (req, resp) => {
+    const accountnumber = req.params.accountnumber;
+    const number = Number(accountnumber);
+    try {
+        client.query("select status from accounts where accountnumber = $1",
+            [number], (err, rows) => {
+                if (err) {
+                    resp.status(400).send({
+                        status : 400,
+                        error : "bad request"
+                    })
+                } else {
+                    usedata(rows)
+                }
+            });
+        const usedata = value => {
+            if (value.rows[0] == undefined) {
+                resp.status(404).send({
+                    status : 404 ,
+                    error : "account number not found"
+                })
+            } else {
+            const status = value.rows[0].status;
+            if (status == 'active') {
+                client.query("UPDATE accounts set status = 'dormant' where accountnumber = $1", [number])
+                client.query("SELECT accountnumber , status from accounts where accountnumber = $1", [number],
+                    (err, rows) => {
+                        resp.send({
+                            status: 200,
+                            data: rows.rows
+                        })                
+                    })
+            } else if (status == 'dormant') {
+                client.query("UPDATE accounts set status = 'active' where accountnumber = $1", [number])
+                client.query("SELECT accountnumber , status from accounts where accountnumber = $1", [number],
+                    (err, rows) => {
+                        if (err) {
+                            throw err;
+                        } else {
+                            resp.send({
+                                status: 200,
+                                data: rows.rows
+                            })
+                        }
+                    })
+            } else {
+                resp.status(500).send({
+                    status : 500,
+                    error : "internal server error"
+                })
+            }
+        }
+    }
+    } catch (error) {
+        resp.status(500).send({
+            status: 500,
+            error: "internal server error"
+        })
+    }
+}

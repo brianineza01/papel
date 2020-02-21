@@ -1,7 +1,11 @@
 import { Router } from 'express';
 import { Client } from 'pg';
 import { config } from 'dotenv';
-import { listofaccounts, createAccount, specificinfo , Deleteaccount } from "../controllers/accounts-control";
+import {
+    listofaccounts, createAccount,
+    specificinfo, Deleteaccount,
+    changeStatus
+} from "../controllers/accounts-control";
 import { validateAccount } from "../middleware/validateaccount";
 config();
 const client = new Client(process.env.DB_CONNECT);
@@ -14,5 +18,7 @@ router.post('/', validateAccount, createAccount);
 //view specific account information
 router.get('/:accountnumber', specificinfo)
 //delete an account
-router.delete('/:accountnumber' , Deleteaccount)
+router.delete('/:accountnumber', Deleteaccount)
+//acttivate or deactivate an account
+router.patch('/:accountnumber', changeStatus)
 export default router;
