@@ -61,3 +61,37 @@ export async function createAccount(req, resp) {
         })
     }
 }
+//specific account 
+export  const specificinfo = async (req, resp)=> {
+    const accountnumber = req.params.accountnumber;
+    const number = Number(accountnumber);
+    try {
+        client.query("select * from accounts where accountnumber = $1", [number]
+        ,(err , results) => {
+            if(err)
+            {
+                resp.status(400).send({
+                    status : 400,
+                    error : "bad request"
+                })
+            } else {
+                if (results.rows.length == 1) {
+                resp.send({
+                    status: 200,
+                    data: results.rows
+                })
+            } else {
+                resp.status(404).send({
+                    status : 404 ,
+                    error : 'data are not found'
+                })
+            }
+            }
+        })
+    } catch (error) {
+        resp.status(500).send({
+            status: 500,
+            error: "internal server error"
+        })
+    }
+}

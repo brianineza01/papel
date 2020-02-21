@@ -105,3 +105,46 @@ describe('/ POST data to accounts', () => {
       });
   });
 })
+
+describe('/GET data of one account from accounts', () => {
+  it('should return the information of one accounts', (done) => {
+    chai.request(server)
+      .get('/accounts/13')
+      .end((err, res) => {
+        chai.expect(res).to.have.status(200);
+        res.body.should.have.property('status').that.equals(200);
+        res.body.should.have.property('data');
+        done();
+      });
+  });
+  it('should return the information of one accounts', (done) => {
+    chai.request(server)
+      .get('/accounts/14')
+      .end((err, res) => {
+        chai.expect(res).to.have.status(200);
+        res.body.should.have.property('status').that.equals(200);
+        res.body.should.have.property('data');
+        done();
+      });
+  });
+  it('should return an error as account number is not in database', (done) => {
+    chai.request(server)
+      .get('/accounts/3456789')
+      .end((err, res) => {
+        chai.expect(res).to.have.status(404);
+        res.body.should.have.property('status').that.equals(404);
+        res.body.should.have.property('error');
+        done();
+      });
+  });
+  it('should return the error as the parameter passed is not a number ', (done) => {
+    chai.request(server)
+      .get('/accounts/aq345')
+      .end((err, res) => {
+        chai.expect(res).to.have.status(400);
+        res.body.should.have.property('status').that.equals(400);
+        res.body.should.have.property('error').that.equals('bad request');
+        done();
+      });
+  });
+})
