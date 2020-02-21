@@ -119,7 +119,7 @@ describe('/GET data of one account from accounts', () => {
   });
   it('should return the information of one accounts', (done) => {
     chai.request(server)
-      .get('/accounts/14')
+      .get('/accounts/19')
       .end((err, res) => {
         chai.expect(res).to.have.status(200);
         res.body.should.have.property('status').that.equals(200);
@@ -134,6 +134,38 @@ describe('/GET data of one account from accounts', () => {
         chai.expect(res).to.have.status(404);
         res.body.should.have.property('status').that.equals(404);
         res.body.should.have.property('error');
+        done();
+      });
+  });
+  it('should return the error as the parameter passed is not a number ', (done) => {
+    chai.request(server)
+      .get('/accounts/aq345')
+      .end((err, res) => {
+        chai.expect(res).to.have.status(400);
+        res.body.should.have.property('status').that.equals(400);
+        res.body.should.have.property('error').that.equals('bad request');
+        done();
+      });
+  });
+})
+describe('/DELETE data from accounts table', () => {
+  it('should return that the account was delet', (done) => {
+    chai.request(server)
+      .delete('/accounts/15')
+      .end((err, res) => {
+        chai.expect(res).to.have.status(200);
+        res.body.should.have.property('status').that.equals(200);
+        res.body.should.have.property('message').that.equals("account was succesfully deleted");
+        done();
+      });
+  });
+  it('should return an error as account number is not in database', (done) => {
+    chai.request(server)
+      .get('/accounts/3456789')
+      .end((err, res) => {
+        chai.expect(res).to.have.status(404);
+        res.body.should.have.property('status').that.equals(404);
+
         done();
       });
   });
