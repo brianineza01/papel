@@ -17,6 +17,18 @@ export const createtable = () => {
    status VARCHAR(10) NOT NULL,
    balance FLOAT NOT NULL);`
    );
+   client.query(`
+   CREATE TABLE IF NOT EXISTS transactions(
+   id SERIAL PRIMARY KEY,
+   createdon date NOT NULL,
+   accountnumber integer NOT NULL ,
+   cashier VARCHAR(1000) NOT NULL,
+   type VARCHAR(10) NOT NULL,
+   amount FLOAT NOT NULL,
+   oldbalance FLOAT NOT NULL,
+   newbalance FLOAT NOT NULL
+   );`
+   );
 }
 
 export const truncatetable = () => {
