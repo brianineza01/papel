@@ -10,6 +10,5 @@ client.connect();
 const router = Router();
 router.post('/:accountnumber/debit', checkacc, validateTransaction, transactionDebit);
 router.post('/:accountnumber/credit', checkacc, validateTransaction, transactionCredit);
-router.get('/:accountnumber/transactions', checkacc, historyofaccounts);
 router.get('/:transactionid', checkacc, specificTransaction);
 export default router;

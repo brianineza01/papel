@@ -115,44 +115,7 @@ describe('/ POST data to transactions/debit ', () => {
       });
   });
 })
-describe('/GET transaction history of one account from transactions', () => {
-  it('should return the transactions of one accounts', (done) => {
-    const token = process.env.TOKEN;
-    chai.request(server)
-      .get('/transactions/30/transactions')
-      .set('token', token)
-      .end((err, res) => {
-        chai.expect(res).to.have.status(200);
-        res.body.should.have.property('status').that.equals(200);
-        res.body.should.have.property('data');
-        done();
-      });
-  });
-  it('should return an error as account number is not found in database', (done) => {
-    const token = process.env.TOKEN;
-    chai.request(server)
-      .get('/transactions/3456789/transactions')
-      .set('token', token)
-      .end((err, res) => {
-        chai.expect(res).to.have.status(404);
-        res.body.should.have.property('status').that.equals(404);
-        res.body.should.have.property('error');
-        done();
-      });
-  });
-  it('should return the error as the parameter passed is not a number ', (done) => {
-    const token = process.env.TOKEN;
-    chai.request(server)
-      .get('/transactions/aq345/transactions')
-      .set('token', token)
-      .end((err, res) => {
-        chai.expect(res).to.have.status(400);
-        res.body.should.have.property('status').that.equals(400);
-        res.body.should.have.property('error').that.equals('Bad request');
-        done();
-      });
-  });
-})
+
 describe('/GET transaction history of one account from transactions', () => {
   it('should return the transactions of one accounts', (done) => {
     const token = process.env.TOKEN;
