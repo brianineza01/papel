@@ -90,3 +90,29 @@ export const historyofaccounts = async (req, resp) => {
         });
     }
 }
+//specific transaction
+export const specificTransaction = async (req, resp) => {
+    const { transactionid } = req.params;
+    const id = Number(transactionid);
+    console.log(id);
+    try {
+        const results = await client.query("select * from transactions where id = $1", [id])
+        if (results.rowCount > 0) {
+            resp.status(200).send({
+                status: 200,
+                data: results.rows
+            });
+        } else {
+            resp.status(404).send({
+                status: 404,
+                error: "account number not found"
+            })
+        }
+    }
+    catch {
+        resp.status(400).send({
+            status: 400,
+            error: "Bad request"
+        })
+    }
+}

@@ -62,7 +62,7 @@ describe('/ POST data to transactions/credit ', () => {
 })
 
 describe('/ POST data to transactions/debit ', () => {
-  it('should return the information of the credit transaction', (done) => {
+  it('should return the information of the debit transaction', (done) => {
     const token = process.env.TOKEN;
     chai.request(server)
       .post('/transactions/30/debit')
@@ -115,11 +115,11 @@ describe('/ POST data to transactions/debit ', () => {
       });
   });
 })
-describe('/GET data of one account from accounts', () => {
+describe('/GET transaction history of one account from transactions', () => {
   it('should return the transactions of one accounts', (done) => {
     const token = process.env.TOKEN;
     chai.request(server)
-      .get('/accounts/30')
+      .get('/transactions/30/transactions')
       .set('token', token)
       .end((err, res) => {
         chai.expect(res).to.have.status(200);
@@ -144,6 +144,44 @@ describe('/GET data of one account from accounts', () => {
     const token = process.env.TOKEN;
     chai.request(server)
       .get('/transactions/aq345/transactions')
+      .set('token', token)
+      .end((err, res) => {
+        chai.expect(res).to.have.status(400);
+        res.body.should.have.property('status').that.equals(400);
+        res.body.should.have.property('error').that.equals('Bad request');
+        done();
+      });
+  });
+})
+describe('/GET transaction history of one account from transactions', () => {
+  it('should return the transactions of one accounts', (done) => {
+    const token = process.env.TOKEN;
+    chai.request(server)
+      .get('/transactions/02')
+      .set('token', token)
+      .end((err, res) => {
+        chai.expect(res).to.have.status(200);
+        res.body.should.have.property('status').that.equals(200);
+        res.body.should.have.property('data');
+        done();
+      });
+  });
+  it('should return an error as account number is not found in database', (done) => {
+    const token = process.env.TOKEN;
+    chai.request(server)
+      .get('/transactions/3456789')
+      .set('token', token)
+      .end((err, res) => {
+        chai.expect(res).to.have.status(404);
+        res.body.should.have.property('status').that.equals(404);
+        res.body.should.have.property('error');
+        done();
+      });
+  });
+  it('should return the error as the parameter passed is not a number ', (done) => {
+    const token = process.env.TOKEN;
+    chai.request(server)
+      .get('/transactions/aq346754')
       .set('token', token)
       .end((err, res) => {
         chai.expect(res).to.have.status(400);
