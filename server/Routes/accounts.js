@@ -4,7 +4,7 @@ import { config } from 'dotenv';
 import {
     listofaccounts, createAccount,
     specificinfo, Deleteaccount,
-    changeStatus
+    changeStatus, historyofaccounts
 } from "../controllers/accounts-control";
 import { validateAccount } from "../middleware/validateaccount";
 import { checkacc } from "../middleware/check-acc";
@@ -20,6 +20,8 @@ router.post('/',checkacc , validateAccount, createAccount);
 router.get('/:accountnumber', checkacc ,specificinfo)
 //delete an account
 router.delete('/:accountnumber', checkacc ,Deleteaccount)
-//acttivate or deactivate an account
+//activate or deactivate an account
 router.patch('/:accountnumber', checkacc ,changeStatus)
+//transaction 
+router.get('/:accountnumber/transactions', checkacc, historyofaccounts);
 export default router;
