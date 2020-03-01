@@ -23,7 +23,6 @@ export const transactionCredit = async (req, resp) => {
             data: insert.rows
         })
     } catch (err) {
-        console.log("error at catch ",err);
         resp.status(400).send({
             status: 400,
             error: "bad request"
@@ -65,5 +64,29 @@ export const transactionDebit = async (req, resp) => {
             status: 400,
             error: "bad request"
         })
+    }
+}
+//an account's transaction history
+export const historyofaccounts = async (req, resp) => {
+    const { accountnumber } = req.params;
+    const number = Number(accountnumber);
+    try {
+        const results = await client.query("select * from transactions where accountnumber = $1", [number]);
+        if (results.rowCount > 0) {
+            resp.send({
+                status: 200,
+                data: results.rows
+            });
+        } else {
+            resp.status(404).send({
+                status: 404,
+                error: "account number not found"
+            })
+        }
+    } catch (error) {
+        resp.status(400).send({
+            status: 400,
+            error: "Bad request"
+        });
     }
 }
