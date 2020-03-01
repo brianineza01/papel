@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Client } from 'pg';
 import { config } from 'dotenv';
-import { transactionDebit , transactionCredit } from "../controllers/transaction-control";
+import { transactionDebit , transactionCredit , historyofaccounts } from "../controllers/transaction-control";
 import { checkacc } from "../middleware/check-acc";
 import { validateTransaction } from "../middleware/validateTransaction";
 config();
@@ -10,4 +10,5 @@ client.connect();
 const router = Router();
 router.post('/:accountnumber/debit',checkacc ,validateTransaction, transactionDebit);
 router.post('/:accountnumber/credit',checkacc ,validateTransaction , transactionCredit);
+router.get('/:accountnumber/transactions',checkacc , historyofaccounts );
 export default router;
