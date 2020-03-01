@@ -1,5 +1,5 @@
 import client from '../database/db_connect';
-import jwt, { decode } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 //to credit an account
 export const transactionCredit = async (req, resp) => {
     const type = 'credit';
@@ -94,7 +94,6 @@ export const historyofaccounts = async (req, resp) => {
 export const specificTransaction = async (req, resp) => {
     const { transactionid } = req.params;
     const id = Number(transactionid);
-    console.log(id);
     try {
         const results = await client.query("select * from transactions where id = $1", [id])
         if (results.rowCount > 0) {

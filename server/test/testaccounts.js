@@ -79,7 +79,7 @@ describe('/ POST data to accounts', () => {
       "balance": 0
     }
   ];
-  
+
   it('should return the information of created account', (done) => {
     const token = process.env.TOKEN;
     chai.request(server)

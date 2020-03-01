@@ -1,6 +1,6 @@
 import client from '../database/db_connect';
 //list of accounts
-export async function listofaccounts(req, resp) {
+export const listofaccounts = async (req, resp) =>{
     const status = req.query.status;
     try {
         if (status == 'active') {
@@ -42,7 +42,7 @@ export async function listofaccounts(req, resp) {
 
 //create a bank account
 
-export async function createAccount(req, resp) {
+export  const createAccount = async (req, resp) => {
     const { date, email, type, status, balance } = req.body
     try {
         client.query("INSERT INTO accounts(createdon , owneremail ,  type , status ,balance)  VALUES($1, $2 , $3 , $4 , $5) RETURNING *",
