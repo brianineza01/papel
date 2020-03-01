@@ -7,12 +7,14 @@ import bodyParser from "body-parser";
 import authRoutes from './Routes/auth';
 import accountRoutes from "./Routes/accounts";
 import transactionRoute from "./Routes/transaction"
+import userRoute from './Routes/user'
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(bodyParser.raw("application/JSON"))
 app.use('/auth', authRoutes);
 app.use('/accounts' , accountRoutes)
 app.use('/transactions' , transactionRoute)
+app.use('/user' , userRoute)
 app.listen(process.env.PORT || 3000, () => {
     createtable();
     if(process.env.NODE_ENV == 'test') {
