@@ -356,7 +356,7 @@
           },
           {
             "name": "accountnumber",
-            "in": "parameters",
+            "in": "path",
             "required": true,
             "type": "string",
             "format": "number"
