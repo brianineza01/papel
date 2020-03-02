@@ -1,13 +1,17 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { createtable , truncatetable } from "./database/tables";
-dotenv.config();
-const app = express();
 import bodyParser from "body-parser";
+import swaggerUI from 'swagger-ui-express';
+import swaggerDoc from '../swagger.json';
 import authRoutes from './Routes/auth';
 import accountRoutes from "./Routes/accounts";
 import transactionRoute from "./Routes/transaction"
 import userRoute from './Routes/user'
+
+dotenv.config();
+const app = express();
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(bodyParser.raw("application/JSON"))
