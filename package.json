@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "extends": "airbnb",
+  "engines": {
+    "node": "12.x",
+    "npm": "=6.13.4"
+  },
   "dependencies": {
     "@types/chai-http": "^4.2.0",
     "bcrypt": "^3.0.8",
@@ -32,8 +36,7 @@
   },
   "scripts": {
     "test": "env NODE_ENV=test mocha --require @babel/register --require @babel/polyfill server/test/*.js --timeout 10000 --exit",
-    "start": "SET NODE_ENV=dev && nodemon --exec babel-node ./server/server.js",
-    "build": "mkdir dist && babel src -s -d dist",
+    "start": "env NODE_ENV=dev && nodemon --exec babel-node ./server/server.js",
     "dev": "nodemon --exec babel-node ./server/server.js",
     "coverage": "nyc --reporter=html --report=text npm run test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
