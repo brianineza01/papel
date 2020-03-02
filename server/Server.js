@@ -11,14 +11,16 @@ import userRoute from './Routes/user'
 
 dotenv.config();
 const app = express();
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
+
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(bodyParser.raw("application/JSON"))
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use('/auth', authRoutes);
 app.use('/accounts' , accountRoutes)
 app.use('/transactions' , transactionRoute)
 app.use('/user' , userRoute)
+
 app.listen(process.env.PORT || 3000, () => {
     createtable();
     if(process.env.NODE_ENV == 'test') {
