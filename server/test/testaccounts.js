@@ -59,24 +59,18 @@ describe('/GET data from accounts', () => {
 describe('/ POST data to accounts', () => {
   const data = [
     {
-      "date": "2019-04-24",
       "email": "me@gmail.com",
       "type": "current",
       "status": "active",
-      "balance": 0
     },
     {
-      "date": "2019-04-24",
       "email": "original@gmail.com",
       "type": "saving",
       "status": "dormant",
-      "balance": 0
     },
     {
-      "date": "2019-04-24",
       "email": "originalgmail.com",
       "type": "saving",
-      "balance": 0
     }
   ];
 
