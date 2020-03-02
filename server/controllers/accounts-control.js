@@ -43,7 +43,9 @@ export const listofaccounts = async (req, resp) =>{
 //create a bank account
 
 export  const createAccount = async (req, resp) => {
-    const { date, email, type, status, balance } = req.body
+    const { email, type, status } = req.body
+    const date = new Date();
+    const balance = 0;
     try {
         client.query("INSERT INTO accounts(createdon , owneremail ,  type , status ,balance)  VALUES($1, $2 , $3 , $4 , $5) RETURNING *",
             [date, email, type, status, balance],
