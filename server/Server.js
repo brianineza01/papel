@@ -20,7 +20,10 @@ app.use('/auth', authRoutes);
 app.use('/accounts' , accountRoutes)
 app.use('/transactions' , transactionRoute)
 app.use('/user' , userRoute)
-
+app.use((req, res) => res.status(404).send({
+    status: 404,
+    error: 'PAGE NOT FOUND',
+  }));
 app.listen(process.env.PORT || 3000, () => {
     createtable();
     if(process.env.NODE_ENV == 'test') {
