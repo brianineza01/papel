@@ -43,7 +43,7 @@ export const transactionDebit = async (req, resp) => {
         const oldamount = query.rows[0].balance;
         let newamount = 0;
         if (amount < oldamount) {
-            newamount = amount - oldamount;
+            newamount = oldamount - amount;
             await client.query("UPDATE accounts SET balance = $1 where accountnumber = $2", [newamount, number])
             const insert = await client.query(`INSERT INTO transactions
             (createdon , accountnumber , cashier , type , amount , oldbalance , newbalance)

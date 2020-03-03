@@ -59,17 +59,10 @@ describe('/GET data from accounts', () => {
 describe('/ POST data to accounts', () => {
   const data = [
     {
-      "email": "me@gmail.com",
       "type": "current",
       "status": "active",
     },
     {
-      "email": "original@gmail.com",
-      "type": "saving",
-      "status": "dormant",
-    },
-    {
-      "email": "originalgmail.com",
       "type": "saving",
     }
   ];
@@ -87,25 +80,12 @@ describe('/ POST data to accounts', () => {
         done();
       });
   });
-  it('should return the information of created account', (done) => {
-    const token = process.env.TOKEN;
-    chai.request(server)
-      .post('/accounts')
-      .set('token', token)
-      .send(data[1])
-      .end((err, res) => {
-        chai.expect(res).to.have.status(201);
-        res.body.should.have.property('status').that.equals(201);
-        res.body.should.have.property('data');
-        done();
-      });
-  });
   it('should return an error as data passed are not full', (done) => {
     const token = process.env.TOKEN;
     chai.request(server)
       .post('/accounts')
       .set('token', token)
-      .send(data[2])
+      .send(data[1])
       .end((err, res) => {
         chai.expect(res).to.have.status(400);
         res.body.should.have.property('status').that.equals(400);
@@ -149,18 +129,6 @@ describe('/GET data of one account from accounts', () => {
         chai.expect(res).to.have.status(404);
         res.body.should.have.property('status').that.equals(404);
         res.body.should.have.property('error');
-        done();
-      });
-  });
-  it('should return the error as the parameter passed is not a number ', (done) => {
-    const token = process.env.TOKEN;
-    chai.request(server)
-      .get('/accounts/aq345')
-      .set('token', token)
-      .end((err, res) => {
-        chai.expect(res).to.have.status(400);
-        res.body.should.have.property('status').that.equals(400);
-        res.body.should.have.property('error').that.equals('bad request');
         done();
       });
   });

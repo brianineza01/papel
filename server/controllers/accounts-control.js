@@ -1,4 +1,5 @@
 import client from '../database/db_connect';
+import jwt from "jsonwebtoken";
 //list of accounts
 export const listofaccounts = async (req, resp) =>{
     const status = req.query.status;
@@ -43,12 +44,14 @@ export const listofaccounts = async (req, resp) =>{
 //create a bank account
 
 export  const createAccount = async (req, resp) => {
-    const { email, type, status } = req.body
+    const { type, status } = req.body
     const date = new Date();
     const balance = 0;
+    const decoded = jwt.decode(req.headers.token, process.env.JWT_KEY)
+    const email = decoded.email;
     try {
         client.query("INSERT INTO accounts(createdon , owneremail ,  type , status ,balance)  VALUES($1, $2 , $3 , $4 , $5) RETURNING *",
-            [date, email, type, status, balance],
+            [new Date(), email, type, status, balance],
             (err, result) => {
                 resp.status(201).send({
                     status: 201,

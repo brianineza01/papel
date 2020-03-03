@@ -8,5 +8,5 @@ config();
 const client = new Client(process.env.DB_CONNECT);
 client.connect();
 const router = Router();
-router.get('/:email/accounts', validateUseremail, checkacc, listAccountOwner)
+router.get('/:email/accounts',  checkacc, listAccountOwner)
 export default router;

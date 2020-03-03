@@ -4,7 +4,7 @@ import server from '../Server';
 chai.use(chaiHttp)
 
 const should = chai.should();
-describe('/GET data of one account from accounts', () => {
+describe('/GET data of one account from accounts using user route', () => {
     it('should return the information of one accounts', (done) => {
         const token = process.env.TOKEN;
         chai.request(server)
@@ -26,18 +26,6 @@ describe('/GET data of one account from accounts', () => {
                 chai.expect(res).to.have.status(404);
                 res.body.should.have.property('status').that.equals(404);
                 res.body.should.have.property('error');
-                done();
-            });
-    });
-    it('should return the error as the parameter passed is not a an email ', (done) => {
-        const token = process.env.TOKEN;
-        chai.request(server)
-            .get('/user/megmailcom/accounts')
-            .set('token', token)
-            .end((err, res) => {
-                chai.expect(res).to.have.status(400);
-                res.body.should.have.property('status').that.equals(400);
-                res.body.should.have.property('error');;
                 done();
             });
     });

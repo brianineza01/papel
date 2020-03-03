@@ -6,7 +6,7 @@
     "description": "Papel is a light-weight core banking application that powers banking operations like account creation, customer deposits, and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money.",
     "contact": {}
   },
-  "host": "https://papel-bank-io.herokuapp.com/",
+  "host": "localhost:3000",
   "securityDefinitions": {},
   "schemes": [
     "http",
@@ -122,7 +122,7 @@
         }
       }
     },
-    "/accounts": {
+    "/accounts" : {
       "post": {
         "description": "",
         "summary": "user create account",
@@ -139,7 +139,7 @@
         ],
         "parameters": [
           {
-            "name": "Token",
+            "name": "token",
             "in": "header",
             "type": "string",
             "required": true
@@ -150,13 +150,6 @@
             "required": true,
             "type": "string",
             "format": "text"
-          },
-          {
-            "name": "email",
-            "in": "formData",
-            "required": true,
-            "type": "string",
-            "format": "email"
           },
           {
             "name": "status",
@@ -172,6 +165,40 @@
           },
           "400": {
             "description": "Bad request"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "summary": "view all accounts ",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "transaction",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "display all user accounts in the database"
+          },
+          "400": {
+            "description": "bs"
           },
           "401": {
             "description": "Authentication failed"
@@ -196,10 +223,16 @@
         ],
         "parameters": [
           {
-            "name": "Token",
+            "name": "token",
             "in": "header",
             "type": "string",
             "required": true
+          },
+          {
+            "name" : "email",
+            "in" : "path",
+            "type" : "string",
+            "required":true
           }
         ],
         "responses": {
@@ -215,7 +248,8 @@
         }
       }
     },
-    "/accounts/{accountNo}": {
+    
+    "/accounts/{accountnumber}": {
       "get": {
         "description": "",
         "summary": "user specific account",
@@ -232,10 +266,16 @@
         ],
         "parameters": [
           {
-            "name": "Token",
+            "name": "token",
             "in": "header",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "accountnumber",
+            "in": "path",
+            "required": true,
+            "type": "number"
           }
         ],
         "responses": {
@@ -252,9 +292,89 @@
             "description": "Internal server error"
           }
         }
+      },
+      "patch": {
+        "description": "",
+        "summary": "change account's status",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "accountStatus",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountnumber",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "account changed to status"
+          },
+          "401": {
+            "description": "Authentication failed"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "summary": "delete account number",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "rejected",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountnumber",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "account successfully deleted"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
+        }
       }
     },
-    "/accounts/{accountNo}/transactions": {
+    "/accounts/{accountnumber}/transactions": {
       "get": {
         "description": "",
         "summary": "All transactions on one account",
@@ -271,10 +391,16 @@
         ],
         "parameters": [
           {
-            "name": "Token",
+            "name": "token",
             "in": "header",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "accountnumber",
+            "in": "path",
+            "required": true,
+            "type": "number"
           }
         ],
         "responses": {
@@ -293,7 +419,7 @@
         }
       }
     },
-    "/transactions/{transactionId}": {
+    "/transactions/{transactionid}": {
       "get": {
         "description": "",
         "summary": "view specific account's transaction",
@@ -310,10 +436,16 @@
         ],
         "parameters": [
           {
-            "name": "Token",
+            "name": "token",
             "in": "header",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "transactionid",
+            "in": "path",
+            "required": true,
+            "type": "number"
           }
         ],
         "responses": {
@@ -332,57 +464,7 @@
         }
       }
     },
-    "/transactions/{accountNo}/debit": {
-      "post": {
-        "description": "",
-        "summary": "cashier debit",
-        "tags": [
-          "Cashier"
-        ],
-        "operationId": "debitAccount",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "parameters": [
-          {
-            "name": "Token",
-            "in": "header",
-            "type": "string",
-            "required": true
-          },
-          {
-            "name": "accountnumber",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "number"
-          },
-          {
-            "name": "amount",
-            "in": "formData",
-            "required": true,
-            "type": "string",
-            "format": "number"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "account successfuly debited"
-          },
-          "400": {
-            "description": "can not debit an account of 0 amount"
-          },
-          "401": {
-            "description": "Auth failed"
-          }
-        }
-      }
-    },
-    "/transactions/{accountNo}/credit": {
+    "/transactions/{accountnumber}/credit": {
       "post": {
         "description": "",
         "summary": "cashier credit",
@@ -399,23 +481,22 @@
         ],
         "parameters": [
           {
-            "name": "Token",
+            "name": "token",
             "in": "header",
             "type": "string",
             "required": true
           },
           {
             "name": "accountnumber",
-            "in": "parameters",
+            "in": "path",
             "required": true,
-            "type": "string",
-            "format": "number"
+            "type": "number"
           },
           {
             "name": "amount",
             "in": "formData",
             "required": true,
-            "type": "string",
+            "type": "number",
             "format": "number"
           }
         ],
@@ -424,170 +505,142 @@
             "description": "account successfuly creited"
           },
           "400": {
-            "description": "can not debit an account of 0 amount"
+            "description": "bad reequest"
           },
           "401": {
             "description": "Auth failed"
           }
         }
-      },
-      "/accounts": {
-        "get": {
-          "description": "",
-          "summary": "view all accounts ",
-          "tags": [
-            "Admin",
-            "Cashier"
-          ],
-          "operationId": "transaction",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "consumes": [
-            "application/x-www-form-urlencoded"
-          ],
-          "parameters": [
-            {
-              "name": "Token",
-              "in": "header",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "display all user accounts in the database"
-            },
-            "400" : {
-              "description" : "bs"
-            },
-            "401": {
-              "description": "Authentication failed"
-            }
-          }
-        }
-      },
-      "/account/{accountNo}": {
-        "patch": {
-          "description": "",
-          "summary": "change account's status",
-          "tags": [
-            "Admin" , "Cashier"
-          ],
-          "operationId": "accountStatus",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "consumes": [
-            "application/x-www-form-urlencoded"
-          ],
-          "parameters": [
-            {
-              "name": "Token",
-              "in": "header",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "name": "status",
-              "in": "path",
-              "required": true,
-              "type": "text"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "account changed to status"
-            },
-            "401": {
-              "description": "Authentication failed"
-            },
-            "400": {
-              "description": "Bad request"
-            }
-          }
-        }
-      },
-      "/accounts/{accountNo}": {
-        "delete": {
-          "description": "",
-          "summary": "delete account number",
-          "tags": [
-            "ADMIN" , "Cashier"
-          ],
-          "operationId": "rejected",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "consumes": [
-            "application/x-www-form-urlencoded"
-          ],
-          "parameters": [
-            {
-              "name": "Token",
-              "in": "header",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "account successfully deleted"
-            },
-            "400": {
-              "description": "Bad request"
-            },
-            "401": {
-              "description": "Authentication failed"
-            }
-          }
-        }
-      },
-      "definitions": {
-        "signin": {
-          "type": "object",
-          "properties": {
-            "email": {
-              "type": "string"
-            },
-            "password": {
-              "type": "string"
-            }
+      }
+    },
+    "/transactions/{accountnumber}/debit": {
+      "post": {
+        "description": "",
+        "summary": "cashier debit",
+        "tags": [
+          "Cashier"
+        ],
+        "operationId": "debitAccount",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "required": true
           },
-          "xml": {
-            "name": "User"
-          }
-        },
-        "signup": {
-          "type": "object",
-          "properties": {
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string"
-            },
-            "password": {
-              "type": "string"
-            }
+          {
+            "name": "accountnumber",
+            "in": "path",
+            "required": true,
+            "type": "number",
+            "format": "number"
           },
-          "xml": {
-            "name": "User"
+          {
+            "name": "amount",
+            "in": "formData",
+            "required": true,
+            "type": "number",
+            "format": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "account successfuly debited"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Auth failed"
           }
         }
-      },
-      "tags": [
-        {
-          "name": "All Endpoints",
-          "description": "all endpoints  return objects in JSON format"
+      }
+    },
+    "/accounts?status=active": {
+      "get": {
+        "description": "",
+        "summary": "view all active accounts ",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "transaction",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "display all user accounts in the database"
+          },
+          "400": {
+            "description": "bs"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
         }
-      ]
+      }
+    },
+    "/accounts?status=dormant": {
+      "get": {
+        "description": "",
+        "summary": "view all dormant accounts ",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "transaction",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "display all user accounts in the database"
+          },
+          "400": {
+            "description": "bs"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
+        }
+      }
     }
-  }
+  },
+  "definitions": {},
+  "tags": [
+    {
+      "name": "All Endpoints",
+      "description": "all endpoints  return objects in JSON format"
+    }
+  ]
 }

@@ -15,7 +15,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(bodyParser.raw("application/JSON"))
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
+app.use('/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use('/auth', authRoutes);
 app.use('/accounts' , accountRoutes)
 app.use('/transactions' , transactionRoute)
