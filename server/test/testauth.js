@@ -1,12 +1,9 @@
 
-//Require the dev-dependencies
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../Server';
 chai.use(chaiHttp)
 const should = chai.should();
-//Our parent block
-//testing login
 describe('/POST data to SIGNUP', () => {
   const user = [{
     "lastname": "MANISHIMWE",

@@ -1,5 +1,3 @@
-
-//Require the dev-dependencies
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../Server';

@@ -36,7 +36,7 @@
   },
   "scripts": {
     "test": "env NODE_ENV=test mocha --require @babel/register --require @babel/polyfill server/test/*.js --timeout 10000 --exit",
-    "start": "env NODE_ENV=dev && nodemon --exec babel-node ./server/Server.js",
+    "start": "env NODE_ENV=development && nodemon --exec babel-node ./server/Server.js",
     "dev": "nodemon --exec babel-node ./server/server.js",
     "coverage": "nyc --reporter=html --report=text npm run test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
